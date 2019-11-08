@@ -17,8 +17,7 @@ for row in f:
     environment.append(rowlist)
 #'print(environment)
 
-matplotlib.pyplot.imshow(environment)
-matplotlib.pyplot.show()
+
 
 num_of_agents = 10
 num_of_iterations = 1
@@ -38,13 +37,15 @@ matplotlib.pyplot.xlim(0, 99)
 matplotlib.pyplot.ylim(0, 99)
 for i in range(num_of_agents):
     matplotlib.pyplot.scatter(agents[i].x,agents[i].y)
+matplotlib.pyplot.imshow(environment)
 matplotlib.pyplot.show()
+
 
 for agents_row_a in agents:
     for agents_row_b in agents:
         distance = distance_between(agents_row_a, agents_row_b)
         
-a = agentframework.Agent()
+a = agentframework.Agent(environment)
 print(a.y, a.x)
 a.move()
 print(a.y, a.x)
