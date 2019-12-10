@@ -79,26 +79,29 @@ def update(frame_number):
     
     fig.clear()   
     
-    for j in range(num_of_iterations):
+    for i in range(num_of_iterations):
         alreadyshared = []
         agents[i].move()
         agents[i].eat()
-        
+        agents[i].share_with_neighbourhood
 #agents share with neighbours(neighbourhood)
     for i in range(num_of_agents):
         ashared = agents[i].share_with_neighbours(neighbourhood, alreadyshared)
         alreadyshared.append(ashared) 
-'''       
+        
+    matplotlib.pyplot.show(environment)
+   
     for i in range(num_of_agents):
-        matplotlib.pyplot.scatter(agents[i][0],agents[i][1])
-'''
+        matplotlib.pyplot.scatter(agents[i].y,agents[i].x)
+    #matplotlib.pyplot.show()
 def gen_function(b = [0]):
     a = 0
     global carry_on #Not actually needed as we're not assigning, but clearer
-    while (a < 10) & (carry_on) :
+    while (a < num_of_iterations) & (carry_on) :
         yield a			# Returns control and waits next call.
         a = a + 1
-
+matplotlib.pyplot.draw()
+    
 
 
 #draw a scatterplot 
@@ -107,10 +110,10 @@ matplotlib.pyplot.xlim(0, 99)
 matplotlib.pyplot.ylim(0, 99)
 for i in range(num_of_agents):
     matplotlib.pyplot.scatter(agents[i].x,agents[i].y)
-#matplotlib.pyplot.show() '''
-    
+matplotlib.pyplot.draw()
+'''
 ani = matplotlib.animation.FuncAnimation(fig, update, frames=num_of_iterations,interval=2, repeat=False)
-matplotlib.pyplot.show(environment)
+#matplotlib.pyplot.show(environment)
 
 
 
