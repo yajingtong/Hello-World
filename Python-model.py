@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('TkAgg')
 import random
 import operator
 import numpy as np
@@ -8,7 +10,6 @@ import requests
 import bs4
 import matplotlib.animation as animation
 import tkinter
-matplotlib.use('TkAgg')
 
 #initialise the pramiters
 num_of_agents = 10
@@ -38,9 +39,11 @@ td_xs = soup.find_all(attrs={"class" : "x"})
 fig = matplotlib.pyplot.figure(figsize=(7, 7))
 ax = fig.add_axes([0, 0, 1, 1]) 
 
+carry_on=True
+
 # Make the agents.
-for i in range(num_of_agents):
-    y = int(td_ys[i].text)
+for i in range(num_of_agents):#use the for-loop to create agents in each iterations
+    y = int(td_ys[i].text)#assign x,y coordinates  values to agents
     x = int(td_xs[i].text)
     agents.append(agentframework.Agent(x, y, environment, agents, neighbourhood))
     
@@ -67,7 +70,7 @@ def update(frame_number):
 def gen_function(b = [0]):
     a = 0
     global carry_on #Not actually needed as we're not assigning, but clearer
-    while (a < 10) & (carry_on) :
+    while (a < num_of_iterations) & (carry_on) :
         yield a			# Returns control and waits next call.
         a = a + 1
 
